@@ -15,7 +15,12 @@ body {
     height: 100vh;
     font-family: var(--primary-font);
     color: var(--text-color);
-    background: var(--background);
+    background: black;
+    background-image: linear-gradient(
+        rgba(0, 0, 255, 0.795),
+        rgba(128, 0, 128, 0.804),
+        rgba(0, 128, 0, 0.804)
+    );
     display: grid;
     grid-template-rows: auto 1fr;
 }

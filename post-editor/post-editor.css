@@ -1,0 +1,11 @@
+.preview {
+    height: 128px;
+    width: 128px;
+    object-fit: cover;
+    border: 1px solid var(--placeholder-color);
+    background: white;
+}
+
+label {
+    color: white;
+}
