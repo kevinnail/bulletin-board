@@ -27,4 +27,21 @@ export async function signOutUser() {
     return await client.auth.signOut();
 }
 
+/* Storage Functions */
 /* Data functions */
+export async function uploadImage(bucketName, imagePath, imageFile) {
+    const bucket = client.storage.from(bucket);
+    const response = await bucket.upload(imagePath, imageFile, {
+        cacheControl: '3600',
+        upsert: true,
+    });
+
+    if (response.error) {
+        console.log('upload image error ' + response);
+        return null;
+    }
+    const url = `${SUPABASE_URL}/storage/v1/object/public/project-images/bulletin/${response.data.Key}`;
+    return url;
+}
+
+// https://lmxgwefcojhyudouhfdi.supabase.co/storage/v1/object/public/project-images/bulletin/meDrums.jpg
