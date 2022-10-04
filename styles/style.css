@@ -1,0 +1,12 @@
+#bulletin-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+    grid-auto-rows: 400px;
+    gap: 20px;
+}
+
+#bulletin-board li {
+    background-color: yellow;
+    padding: 10px;
+    border: 2px solid green;
+}
