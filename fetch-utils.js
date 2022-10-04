@@ -44,4 +44,6 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
     return url;
 }
 
-// https://lmxgwefcojhyudouhfdi.supabase.co/storage/v1/object/public/project-images/bulletin/meDrums.jpg
+export async function createPost(post) {
+    return await client.from('bulletins').insert(post).single();
+}

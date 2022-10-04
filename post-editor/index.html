@@ -30,7 +30,7 @@
             <form id="bulletin-form">
                 <label>
                     <div>Category</div>
-                    <select>
+                    <select name="category">
                         <option value="null" value="Free">choose category</option>
                         <option value="community">🧑🏻‍🤝‍🧑🏽Community</option>
                         <option value="services">🐕‍🦺Services</option>
@@ -43,7 +43,7 @@
                 </label>
                 <label>
                     <div>Title</div>
-                    <input name="name" required placeholder="Enter title" />
+                    <input name="title" required placeholder="Enter title" />
                 </label>
                 <label>
                     <div>Description</div>
@@ -70,7 +70,14 @@
                     alt="avatar review"
                     src="../assets/place-holder.png"
                 />
-
+                <label>
+                    <div>Contact Info</div>
+                    <textarea
+                        name="contact"
+                        required
+                        placeholder="Enter contact info..."
+                    ></textarea>
+                </label>
                 <button id="add-button">Add Post</button>
 
                 <p id="error-display"></p>

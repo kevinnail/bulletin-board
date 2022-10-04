@@ -1,7 +1,7 @@
 /* Imports */
 
 import '../auth/user.js';
-import { uploadImage } from '../fetch-utils.js';
+import { uploadImage, createPost } from '../fetch-utils.js';
 
 /* DOM elements*/
 
@@ -33,6 +33,29 @@ bulletinForm.addEventListener('submit', async (e) => {
     const imageFile = formData.get('image');
     const randomFolder = Math.floor(Date.now() * Math.random());
     const imagePath = `bulletin/${randomFolder}/${imageFile.name}`;
-    console.log(imageFile + ' ' + imagePath);
     const url = await uploadImage('project-images', imagePath, imageFile);
+    const post = {
+        category: formData.get('category'),
+        title: formData.get('title'),
+        description: formData.get('description'),
+        contact: formData.get('contact'),
+        image_url: url,
+    };
+
+    const response = await createPost(post);
+    error = response.error;
+    addButton.disabled = false;
+    if (error) {
+        displayError();
+    } else {
+        location.assign('/');
+    }
 });
+
+function displayError() {
+    if (error) {
+        errorDisplay.textContent = error.message;
+    } else {
+        errorDisplay.textContent = '';
+    }
+}
