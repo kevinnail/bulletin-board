@@ -9,8 +9,9 @@ export function renderPost(post) {
     span.classList.add('category-image');
 
     const img = document.createElement('img');
+    img.classList.add('image-size');
     img.src = post.image_url;
-    console.log(post.image_url);
+
     const p = document.createElement('p');
     p.textContent = post.description;
 

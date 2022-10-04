@@ -57,7 +57,6 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
         // console.log('upload image error ' + response);
         return null;
     }
-    const url = `${SUPABASE_URL}/storage/v1/object/public/project-images/bulletin/${response.data.Key}`;
-
+    const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
     return url;
 }

@@ -11,8 +11,16 @@
     border: 2px solid green;
 }
 
+#bulletin-board li h2 {
+    display: inline-block;
+}
+
 .category-image {
     position: relative;
     margin-left: 150px;
     font-size: 1.5em;
+}
+
+.image-size {
+    width: 250px;
 }
