@@ -27,8 +27,25 @@ export async function signOutUser() {
     return await client.auth.signOut();
 }
 
-/* Storage Functions */
 /* Data functions */
+
+export async function createPost(post) {
+    return await client.from('bulletins').insert(post).single();
+}
+
+export async function getPosts(title) {
+    let query = client
+        .from('bulletins')
+        .select('*')
+        .limit(200)
+        .order('created_at', { ascending: false });
+    if (title) {
+        query.ilike('title', `%${title}%`);
+    }
+    return query;
+}
+
+/* Storage Functions */
 export async function uploadImage(bucketName, imagePath, imageFile) {
     const bucket = client.storage.from(bucketName);
     const response = await bucket.upload(imagePath, imageFile, {
@@ -37,13 +54,10 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
     });
 
     if (response.error) {
-        console.log('upload image error ' + response);
+        // console.log('upload image error ' + response);
         return null;
     }
     const url = `${SUPABASE_URL}/storage/v1/object/public/project-images/bulletin/${response.data.Key}`;
-    return url;
-}
 
-export async function createPost(post) {
-    return await client.from('bulletins').insert(post).single();
+    return url;
 }
