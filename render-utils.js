@@ -9,8 +9,6 @@ export function renderPost(post) {
     span.classList.add('category-image');
 
     const img = document.createElement('img');
-    console.log('render element ' + post.image_url);
-    console.log(post);
 
     if (post.image_url) {
         img.classList.add('image-size');

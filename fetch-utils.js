@@ -53,7 +53,6 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
         const response = await bucket.upload(imagePath, imageFile, {
             cacheControl: '3600',
             upsert: true,
-            // console.log('upload image error ' + response.error);
         });
 
         if (response.error) {
@@ -63,6 +62,5 @@ export async function uploadImage(bucketName, imagePath, imageFile) {
         url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
     }
 
-    alert('upload image ' + url);
     return url;
 }

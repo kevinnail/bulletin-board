@@ -33,14 +33,12 @@ bulletinForm.addEventListener('submit', async (e) => {
     const imageFile = formData.get('image');
 
     let url = null;
-    console.log('imagefile.size' + imageFile.size);
 
     if (imageFile.size !== 0) {
         const randomFolder = Math.floor(Date.now() * Math.random());
         const imagePath = `bulletin/${randomFolder}/${imageFile.name}`;
         url = await uploadImage('project-images', imagePath, imageFile);
     }
-    console.log(url);
     const post = {
         category: formData.get('category'),
         title: formData.get('title'),
