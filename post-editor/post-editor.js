@@ -29,9 +29,10 @@ imageInput.addEventListener('change', () => {
 bulletinForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     addButton.disabled = true;
-    const formData = new formData('image');
+    const formData = new FormData(bulletinForm);
     const imageFile = formData.get('image');
     const randomFolder = Math.floor(Date.now() * Math.random());
-    const imagePath = `project-images/bulletin/${randomFolder}/${imageFile.name}`;
-    const url = await uploadImage('images', imagePath, imageFile);
+    const imagePath = `bulletin/${randomFolder}/${imageFile.name}`;
+    console.log(imageFile + ' ' + imagePath);
+    const url = await uploadImage('project-images', imagePath, imageFile);
 });

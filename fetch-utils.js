@@ -30,7 +30,7 @@ export async function signOutUser() {
 /* Storage Functions */
 /* Data functions */
 export async function uploadImage(bucketName, imagePath, imageFile) {
-    const bucket = client.storage.from(bucket);
+    const bucket = client.storage.from(bucketName);
     const response = await bucket.upload(imagePath, imageFile, {
         cacheControl: '3600',
         upsert: true,
