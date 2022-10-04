@@ -11,16 +11,19 @@
     border: 2px solid green;
 }
 
-#bulletin-board li h2 {
+#bulletin-board li h3 {
     display: inline-block;
 }
 
 .category-image {
     position: relative;
-    margin-left: 150px;
+    margin-left: 75px;
     font-size: 1.5em;
 }
 
 .image-size {
     width: 250px;
+}
+.contact-info {
+    font-weight: 700;
 }

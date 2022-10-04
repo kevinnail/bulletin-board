@@ -48,15 +48,21 @@ export async function getPosts(title) {
 /* Storage Functions */
 export async function uploadImage(bucketName, imagePath, imageFile) {
     const bucket = client.storage.from(bucketName);
-    const response = await bucket.upload(imagePath, imageFile, {
-        cacheControl: '3600',
-        upsert: true,
-    });
+    let url = null;
+    if (imageFile.size !== 0) {
+        const response = await bucket.upload(imagePath, imageFile, {
+            cacheControl: '3600',
+            upsert: true,
+            // console.log('upload image error ' + response.error);
+        });
 
-    if (response.error) {
-        // console.log('upload image error ' + response);
-        return null;
+        if (response.error) {
+            return null;
+        }
+
+        url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
     }
-    const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
+
+    alert('upload image ' + url);
     return url;
 }

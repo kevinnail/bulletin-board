@@ -1,24 +1,33 @@
 export function renderPost(post) {
     const li = document.createElement('li');
 
-    const h2 = document.createElement('h2');
-    h2.textContent = post.title;
+    const h3 = document.createElement('h3');
+    h3.textContent = post.title;
 
     const span = document.createElement('span');
     span.textContent = categoryEmoji(post.category);
     span.classList.add('category-image');
 
     const img = document.createElement('img');
-    img.classList.add('image-size');
-    img.src = post.image_url;
+    console.log('render element ' + post.image_url);
+    console.log(post);
+
+    if (post.image_url) {
+        img.classList.add('image-size');
+        img.src = post.image_url;
+    } else {
+        img.classList.add('image-size');
+        img.src = './assets/place-holder.png';
+    }
 
     const p = document.createElement('p');
     p.textContent = post.description;
 
     const p2 = document.createElement('p');
-    p2.textContent = 'contact: ' + post.contact;
+    p2.textContent = 'Contact: ' + post.contact;
+    p2.classList.add('contact-info');
 
-    li.append(h2, span, img, p, p2);
+    li.append(h3, span, img, p, p2);
     return li;
 }
 

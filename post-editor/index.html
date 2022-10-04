@@ -30,7 +30,7 @@
             <form id="bulletin-form">
                 <label>
                     <div>Category</div>
-                    <select name="category">
+                    <select required name="category">
                         <option value="null" value="Free">choose category</option>
                         <option value="community">🧑🏻‍🤝‍🧑🏽Community</option>
                         <option value="services">🐕‍🦺Services</option>
@@ -60,7 +60,6 @@
                         id="image-input"
                         name="image"
                         type="file"
-                        required
                         placeholder="upload an image..."
                     />
                 </label>
@@ -72,11 +71,7 @@
                 />
                 <label>
                     <div>Contact Info</div>
-                    <textarea
-                        name="contact"
-                        required
-                        placeholder="Enter contact info..."
-                    ></textarea>
+                    <textarea name="contact" placeholder="Enter contact info..."></textarea>
                 </label>
                 <button id="add-button">Add Post</button>
 
