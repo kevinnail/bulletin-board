@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <!-- js -->
+        <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+        <script type="module" src="post-editor.js"></script>
+        <!-- css -->
+
+        <link rel="stylesheet" href="/styles/reset.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
+        <link rel="stylesheet" href="/styles/form.css" />
+        <link rel="stylesheet" href="post-editor.css" />
+    </head>
+    <body>
+        <header class="page-header">
+            <p class="title">Pet Lover</p>
+            <nav>
+                <a href="../">Bulletin Board</a>
+                <a id="sign-out-link" href="/auth">Sign Out</a>
+            </nav>
+        </header>
+
+        <main>
+            <form id="bulletin-form">
+                <label>
+                    <div>Category</div>
+                    <select required name="category">
+                        <option value="null" value="Free">choose category</option>
+                        <option value="community">🧑🏻‍🤝‍🧑🏽Community</option>
+                        <option value="services">🐕‍🦺Services</option>
+                        <option value="housing">🏠Housing</option>
+                        <option value="for-sale">💵For Sale</option>
+                        <option value="jobs">🤑Jobs</option>
+                        <option value="gigs">🎙️Gigs</option>
+                        <option value="pictures-of-cats">😻Pictures of cats</option>
+                    </select>
+                </label>
+                <label>
+                    <div>Title</div>
+                    <input name="title" required placeholder="Enter title" />
+                </label>
+                <label>
+                    <div>Description</div>
+                    <textarea
+                        name="description"
+                        required
+                        placeholder="What are you posting about?"
+                    ></textarea>
+                </label>
+
+                <label>
+                    <div>Photo</div>
+                    <input
+                        id="image-input"
+                        name="image"
+                        type="file"
+                        placeholder="upload an image..."
+                    />
+                </label>
+                <img
+                    id="preview"
+                    class="preview"
+                    alt="avatar review"
+                    src="../assets/place-holder.png"
+                />
+                <label>
+                    <div>Contact Info</div>
+                    <textarea name="contact" placeholder="Enter contact info..."></textarea>
+                </label>
+                <button id="add-button">Add Post</button>
+
+                <p id="error-display"></p>
+            </form>
+        </main>
+    </body>
+</html>
